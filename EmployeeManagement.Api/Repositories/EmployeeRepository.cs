@@ -27,4 +27,14 @@ public class EmployeeRepository : IEmployeeRepository
         await _employees.InsertOneAsync(employee);
         return employee;
     }
+
+    public async Task<List<Employee>> GetAllAsync()
+    {
+        return await _employees.Find(_ => true).ToListAsync();
+    }
+
+    public async Task<Employee?> GetByIdAsync(string id)
+    {
+        return await _employees.Find(e => e.Id == id).FirstOrDefaultAsync();
+    }
 }
