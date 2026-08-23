@@ -32,4 +32,14 @@ public class EmployeeService : IEmployeeService
 
         return await _repository.CreateAsync(employee);
     }
+
+    public async Task<List<Employee>> GetAllEmployeesAsync()
+    {
+        return await _repository.GetAllAsync();
+    }
+
+    public async Task<Employee?> GetEmployeeByIdAsync(string id)
+    {
+        return await _repository.GetByIdAsync(id);
+    }
 }
